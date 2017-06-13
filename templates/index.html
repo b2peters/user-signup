@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action='/validate'>
+        <label> username
+            <input type='text' name="username" value={{username}}>{{username_error}}
+        </label>
+        <br>
+        <label> password
+            <input type='text' name="password">{{password_error}}
+        </label>
+        <br>
+        <label> confirm password
+            <input type='text' name="password_confirmation">{{password_confirmation_error}}
+        </label>
+        <br>
+        <label> email
+            <input type='text' name="email" value={{email}}>{{email_error}}
+        </label>
+        <br>
+        <input type="submit" name='Submit' id='submit'/>
+        
+    </form>
+{% endblock %}
