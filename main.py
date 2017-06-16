@@ -4,22 +4,26 @@ import cgi
 app=Flask(__name__)
 app.config['DEBUG']=True
 
+# A function to validate the length of the the input str
 def long_enuf(entry):
     if len(entry)>2 and len(entry)<21:
         return True
 
 @app.route("/validate")
 def validate_info():
+    #pull the username/passwords from the form
     username=request.args['username']
     password=request.args['password']
     password_confirmation=request.args['password_confirmation']
     email=request.args['email']
-
+   
+    #intialize error variables
     username_error=''
     password_error=''
     password_confirmation_error=''
     email_error=''
-    
+
+   #validate entries and send error messages 
     if not long_enuf(username):
         username_error = "Please enter a valid username"
     if not long_enuf(password):
